@@ -1,0 +1,141 @@
+<!-- index.html -->
+<!DOCTYPE html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="game">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title>Stat Society Game Night</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- SPELLS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="app.js"></script>
+
+
+</head>
+<body ng-controller="mainCtrl">
+    <div class="container">
+
+        <!-- HEADER AND TODO COUNT -->
+        <div class="jumbotron text-center">
+            <h1>Stat Society Game Night </h1>
+        </div>
+
+        <div id="question1">
+            <h3> Problem 1 </h3>
+            <p> When I go fishing, I catch one fish per hour on average. (Assume they arrive independently, w/constant probability per unit time interval.) </p>
+
+            <p>
+            Bet on the chance that I catch at least one fish in the next hour. (Odds: 3:1)
+            </p>
+
+            <div class="row">
+                    <h4 class="col-sm-3 col-sm-offset-1"> The result is:</h4>
+                    <h4 class="col-sm-3"> <div ng-switch on="fish">
+                        <div ng-switch-when="1">I caught a fish!</div>
+                        <div ng-switch-when="0"> I didn't catch a fish</div>
+                </div></h4>
+                    <button type="submit" class="col-sm-2 stuff btn btn-primary btn-lg" ng-click="fishAnHour()">Fish</button>
+                    <button type="submit" class="col-sm-2 stuff btn btn-primary btn-lg " ng-click="startOver()">Reset</button>
+
+            </div>
+        </div> 
+
+        <div id="question2">
+            <h3> Problem 2 </h3>
+            <p> We will flip cards (out of a 52 card deck) 2 at a time. If the cards are both red, we give them to you. If the cards are both black, I keep the cards flipped. Otherwise, we set them aside. When no cards are remaining, if you have more cards than me, I will give you 2 times however much you pay me. Otherwise, you win nothing.
+            <p>
+            You can either get 1 token or play this game. 
+            </p>
+
+            <div class="row">
+                    <h4 class="col-sm-3 col-sm-offset-1"> The result is:</h4>
+                    <h4 class="col-sm-3"> <div ng-switch on="cards">
+                        <div ng-switch-when="1">Cards are Tied. (You Lose)</div>
+                </div></h4>
+                    <button type="submit" class="col-sm-2 stuff btn btn-primary btn-lg" ng-click="tryCard()">Play!</button>
+                    <button type="submit" class="col-sm-2 stuff btn btn-primary btn-lg " ng-click="resetCard()">Reset</button>
+
+            </div>
+        </div> 
+
+        <div id="question3">
+            <h3> Problem 3 </h3>
+            <p> A bag has 10 Blue Balls and X Red Balls, where X is a number chosen uniformly from 1 to 10. We draw out balls 2 at a time without replacement. If they are the same color, we add a blue ball to the bag. If they are different colors, we add a red ball to the bag. We repeat this process until one ball remains in the bag. 
+            <p>
+            Bet on whether the remaining ball is red. (2:1 odds)
+            </p>
+
+            <div class="row">
+                    <h4 class="col-sm-3 col-sm-offset-1"> The result is:</h4>
+                    <h4 class="col-sm-3"> <div ng-switch on="balls">
+                        <div ng-switch-when="1">The Last Ball is Red</div>
+                        <div ng-switch-when="0"> The Last Ball is Blue</div>
+                </div></h4>
+                    <button type="submit" class="col-sm-2 stuff btn btn-primary btn-lg" ng-click="tryBalls()">Play!</button>
+                    <button type="submit" class="col-sm-2 stuff btn btn-primary btn-lg " ng-click="resetBalls()">Reset</button>
+
+            </div>
+        </div> 
+
+        <div id="question4">
+            <h3> Problem 4 </h3>
+            <p> You're sending job applications to 5 firms: Morgan Stanley, Lehman Brothers, UBS, Goldman Sachs, and Merill Lynch. You have 5 envelopes on the table neatly typed with names and addresses of people at these 5 firms. You also have carefully written out 5 cover letters, personalized to each of the firms. Unfortunately, your best friend has randomly stuffed each cover letter into each of the envelopes for you and sent them out, ignoring the fact that the letters are personalized!
+            </p>
+            <p>You're now worried all 5 of them are sent to the wrong firms. Bet on the probability of this event. (1:1 Odds)</p>
+
+            <div class="row">
+                    <h4 class="col-sm-3 col-sm-offset-1"> The result is:</h4>
+                    <h4 class="col-sm-3"> <div ng-switch on="letters">
+                        <div ng-switch-when="1">All 5 Letters are in the Wrong Envelopes. Whoops.</div>
+                        <div ng-switch-when="0">At least 1 is in the right envelope! Yay!</div>
+                </div></h4>
+                    <button type="submit" class="col-sm-2 stuff btn btn-primary btn-lg" ng-click="tryLetters()">Play!</button>
+                    <button type="submit" class="col-sm-2 stuff btn btn-primary btn-lg " ng-click="resetLetters()">Reset</button>
+
+            </div>
+        </div> 
+
+        <div id="question5">
+            <h3> Problem 5 </h3>
+            <p> You have a room of 100 mice, 50 male and 50 female. Assume that in each mating season, each pair of male and female mice will mate, produce 2 children, and then die. Assume that all the mice who do not mate also die. 40 of your male mice are normal - when they mate with a female mouse, they will produce a boy and a girl. The remaining 10 mice possess a segregration-distorter gene on their Y chromosome that causes them to only father male mice. (This gene is hereditable, with 100% probability.) No female mice have the gene. Assume that male mice with the segregation-distorter gene mate have exactly the same chance as mating with a female mice as a male mouse without. After two generations, we select a mouse at random. </p>
+            <p> Bet on the probability the mouse chosen has the segregation-distorer gene. (3:1 Odds)</p>
+            <div class="row">
+                    <h4 class="col-sm-3 col-sm-offset-1"> The result is:</h4>
+                    <h4 class="col-sm-3"> <div ng-switch on="mice">
+                        <div ng-switch-when="1">The mouse has the gene.</div>
+                        <div ng-switch-when="0">The mouse does not have the gene. </div>
+                </div></h4>
+                    <button type="submit" class="col-sm-2 stuff btn btn-primary btn-lg" ng-click="tryMice()">Play!</button>
+                    <button type="submit" class="col-sm-2 stuff btn btn-primary btn-lg " ng-click="resetMice()">Reset</button>
+
+            </div>
+        </div>
+
+
+        <div id="question6">
+            <h3> Problem 6 </h3>
+            <p> You are given 100 coins. Among them, 1 coin has heads on both sides, and the other 99 are fair coins with heads and tails. You select a coin at random and flip it 8 times without checking if it has two heads. All 8 times, the coin lands on heads.</p>
+            <p> Bet on the probability that the coin is a fair coin (1:2)</p>
+            <div class="row">
+                    <h4 class="col-sm-3 col-sm-offset-1"> The result is:</h4>
+                    <h4 class="col-sm-3"> <div ng-switch on="coins">
+                        <div ng-switch-when="1">Fair Coin</div>
+                        <div ng-switch-when="0">2 Headed Coin </div>
+                </div></h4>
+                    <button type="submit" class="col-sm-2 stuff btn btn-primary btn-lg" ng-click="tryCoins()">Play!</button>
+                    <button type="submit" class="col-sm-2 stuff btn btn-primary btn-lg " ng-click="resetCoins()">Reset</button>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
