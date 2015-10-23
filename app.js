@@ -60,7 +60,7 @@ app.controller('mainCtrl', ['$scope', function($scope){
 	};
 
 	$scope.tryLetters = function(){
-		if($scope.balls> -1){
+		if($scope.letters> -1){
 			return;
 		}
 		var temp = Math.random();
